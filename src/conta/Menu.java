@@ -1,19 +1,44 @@
 package conta;
+
 import java.util.Scanner;
+import conta.model.Conta;
+import conta.model.ContaCorrente;
+import conta.model.ContaPoupanca;
 import conta.util.Cores;
 
 public class Menu {
 
 	public static void main(String[] args) {
+
+		Conta c1 = new Conta(10, 321, 3, "Israel", 100000.0f);
+		c1.visualizar();
+		c1.sacar(4500);
+		c1.visualizar();
+		c1.depositar(200000f);
+		c1.visualizar();
+	
+		ContaCorrente cc1 = new ContaCorrente(11, 322, 4, "Bernardo", 0.0f, 5100000.0f);
+		cc1.visualizar();
+		cc1.sacar(12000.0f);
+		cc1.visualizar();
+		cc1.depositar(5000.0f);
+		cc1.visualizar();
+
 		
+		ContaPoupanca cp1 = new ContaPoupanca(12, 323, 5, "Silva", 34100000.0f);
+		cp1.visualizar();
+		cp1.sacar(1000.0f);
+		cp1.visualizar();
+		cp1.depositar(5000.0f);
+		cp1.visualizar();
+
 		Scanner leia = new Scanner(System.in);
-		
+
 		int opcao;
-		
-		while(true) {
-			
-			System.out.println(Cores.TEXT_BLUE_BOLD
-			+				   "*****************************************");
+
+		while (true) {
+
+			System.out.println(Cores.TEXT_BLUE_BOLD + "*****************************************");
 			System.out.println("****** Banco do Brasil com Israel *******");
 			System.out.println("*****************************************");
 			System.out.println("*****************************************");
@@ -31,14 +56,14 @@ public class Menu {
 			System.out.println("Entre com a opção desejada: ");
 			System.out.println("                      " + Cores.TEXT_RESET);
 			opcao = leia.nextInt();
-			
-			if(opcao == 9) {
+
+			if (opcao == 9) {
 				System.out.println("\nBanco do Brasil com Israel - O seu Futuro começa aqui!");
 				leia.close();
 				System.exit(0);
-				
+
 			}
-			switch(opcao) {
+			switch (opcao) {
 			case 1:
 				System.out.println(Cores.TEXT_PURPLE_BRIGHT + "Criar Conta\n\n");
 				break;

@@ -10,12 +10,10 @@ public class Menu {
 
 	public static void main(String[] args) {
 
-		Conta c1 = new Conta(10, 321, 3, "Israel", 100000.0f);
-		c1.visualizar();
-		c1.sacar(4500);
-		c1.visualizar();
-		c1.depositar(200000f);
-		c1.visualizar();
+		Scanner leia = new Scanner(System.in);
+
+		int opcao;
+		
 	
 		ContaCorrente cc1 = new ContaCorrente(11, 322, 4, "Bernardo", 0.0f, 5100000.0f);
 		cc1.visualizar();
@@ -32,9 +30,6 @@ public class Menu {
 		cp1.depositar(5000.0f);
 		cp1.visualizar();
 
-		Scanner leia = new Scanner(System.in);
-
-		int opcao;
 
 		while (true) {
 

@@ -17,9 +17,9 @@ public class Menu {
 
 		Scanner leia = new Scanner(System.in);
 
-		int opcao, numero, agencia, tipo, aniversario;
+		int opcao, numero, agencia, tipo, aniversario, numeroDestino;
 		String titular;
-		float saldo, limite;
+		float saldo, limite, valor;
 
 		System.out.println("\nCriar Contas\n");
 
@@ -142,7 +142,7 @@ public class Menu {
 						aniversario = leia.nextInt();
 						contas.atualizar(new ContaPoupanca(numero, agencia, tipo, titular, saldo, aniversario));
 					}
-					default ->{
+					default -> {
 						System.out.println("Tipo de conta invalido!");
 					}
 					}
@@ -151,24 +151,54 @@ public class Menu {
 				break;
 			case 5:
 				System.out.println(Cores.TEXT_PURPLE_BRIGHT + "Apagar Conta\n\n");
-				
+
 				System.out.println("Digite o número da Conta: ");
 				numero = leia.hashCode();
-				
+
 				contas.deletar(numero);
-				
+
 				keyPress();
 				break;
 			case 6:
 				System.out.println(Cores.TEXT_PURPLE_BRIGHT + "Saque\n\n");
+
+				System.out.println("Digite o Número da Conta: ");
+				numero = leia.nextInt();
+
+				do {
+					System.out.println("Digite o valor do Saque (R$); ");
+					valor = leia.nextFloat();
+				} while (valor <= 0);
+				contas.sacar(numero, valor);
 				keyPress();
 				break;
 			case 7:
-				System.out.println(Cores.TEXT_PURPLE_BRIGHT + "Depôsito\n\n");
+				System.out.println(Cores.TEXT_PURPLE_BRIGHT + "Depósito\n\n");
+
+				System.out.println("Digite o Número da Conta: ");
+				numero = leia.nextInt();
+
+				do {
+					System.out.println("Digite o valor do Depósito (R$): ");
+					valor = leia.nextFloat();
+
+				} while (valor <= 0);
+				contas.depositar(numero, valor);
+
 				keyPress();
 				break;
 			case 8:
 				System.out.println(Cores.TEXT_PURPLE_BRIGHT + "Transferencia entre contas\n\n");
+				System.out.println("Digite o número da Conta Origem: ");
+				numero = leia.nextInt();
+				System.out.println("Digite o número da Conta Destino: ");
+				numeroDestino = leia.nextInt();
+				do {
+					System.out.println("Digite o valor da Transferência (R$): ");
+					valor = leia.nextFloat();
+
+				} while (valor <= 0);
+				contas.transferir(numero, numeroDestino, valor);
 				keyPress();
 				break;
 			default:
